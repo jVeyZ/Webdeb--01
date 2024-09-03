@@ -6,6 +6,109 @@
     <title>The Gallery</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        
+    @font-face {
+    font-family: Bodoni;
+    src: url(fonts/BodoniSvtyTwoSCITCTT-Book.woff.otf);
+}
+::-webkit-scrollbar {
+width: 25px; 
+height: 0px;/* Adjust the width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #ffffff; /* Color of the scrollbar track */
+    border-left: 2px solid #000000; 
+
+
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ffffff; /* Color of the scrollbar thumb */
+    border-radius: 5px; /* Rounded corners */
+   
+    border: 2px solid black;
+    outline:1px solid white;
+}
+
+
+html, body {
+    height: 100%; /* Ensure body and html take up full viewport height */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row; /* Make sure the flex-direction is set to row */
+}
+
+nav {
+    width: 14em;
+    height: 100%; /* Ensure the sidebar occupies full height */
+    background-color: #b0d9e7;
+    display: flex;
+    flex-direction: column; /* Align items vertically inside the sidebar */
+    flex-shrink: 0; /* Prevent the sidebar from shrinking */
+}
+
+.content {
+    flex-grow: 1; /* Content takes up the remaining space */
+    padding: 2%;
+    box-sizing: border-box;
+    height: 100%; /* Ensure content occupies full height */
+    display: flex;
+    flex-direction: column;
+}
+
+ul {
+    padding-left: 12%;
+    padding-top: 10%;
+    list-style-type: none;
+    height: 100%; /* Ocupa toda la altura */
+}
+
+li {
+    margin: 4% 0;
+}
+
+z
+
+.sidebar ul li a {
+    font-family: Bodoni;
+    font-size: 3rem;
+    color: white;
+    text-decoration: none;
+}
+.underline{
+    text-decoration: underline;
+    text-decoration-thickness: 2.5px;
+    text-underline-offset: 5px;
+
+}
+
+
+h2 {
+    font-size: 3rem;
+    font-family: Bodoni;
+    margin-top: 20px;
+}
+
+h1 {
+    font-size: 5rem;
+    font-stretch: 140%;
+    transform: scaleY(1.08);
+    font-family: Bodoni;
+    margin-top: 0;
+    margin-bottom: 20px;
+    position: relative;
+}
+h1::after{
+    content: "";
+    background: black;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 60%;
+}
     .pfp img {
         border-radius: 50%;
         width: 125px;
@@ -127,7 +230,6 @@
     }</style>
 </head>
 <body>
-    <button class="hamburger" id="hamburger">&#9776;</button>
 <nav class="sidebar">
     <ul>
         <li><a href="#"><span class="underline">h</span>ome</a></li>
