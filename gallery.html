@@ -6,45 +6,51 @@
     <title>The Gallery</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Define size classes for random sizing */
         .size-small {
-            grid-column: span 1;
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        .size-small-h {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+        .size-small-v {
+            grid-column: span 2;
             grid-row: span 1;
         }
 
         .size-medium {
-            grid-column: span 2;
-            grid-row: span 2;
+            grid-column: span 4;
+            grid-row: span 4;
         }
         .size-medium-h {
-            grid-column: span 2;
-            grid-row: span 1;
+            grid-column: span 4;
+            grid-row: span 2;
         }
         .size-medium-v {
-            grid-column: span 1;
-            grid-row: span 2;
+            grid-column: span 2;
+            grid-row: span 4;
         }
 
         .size-large {
-            grid-column: span 3;
-            grid-row: span 3;
+            grid-column: span 6;
+            grid-row: span 6;
         }
         .size-large-h {
-            grid-column: span 3;
-            grid-row: span 2;
+            grid-column: span 6;
+            grid-row: span 4;
         }
         .size-large-v {
-            grid-column: span 2;
-            grid-row: span 3;
+            grid-column: span 4;
+            grid-row: span 6;
         }
 
         .grid {
             width: 100%;
             height: 80vh;
             display: grid;
-            grid-template-columns: repeat(5, 1fr); /* Base number of columns is 5 */
+            grid-template-columns: repeat(10, 1fr); /* Base number of columns is 5 */
             gap: 5px;
-            margin-right:10%;
             box-sizing: border-box;
             grid-auto-flow: dense; /* Make sure items fill gaps */
         }
@@ -63,25 +69,25 @@
         /* Responsive adjustments */
         @media (max-width: 1200px) {
             .grid {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(8, 1fr);
             }
         }
 
         @media (max-width: 900px) {
             .grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(6, 1fr);
             }
         }
 
         @media (max-width: 600px) {
             .grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(4, 1fr);
             }
         }
 
         @media (max-width: 400px) {
             .grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         .container{
@@ -93,12 +99,14 @@
 <body>
 
 <nav class="sidebar">
+   
     <ul>
         <li><a href="index.html"><span class="underline">h</span>ome</a></li>
         <li><a href="#"><span class="underline">a</span>rtists</a></li>
         <li><a href="gallery.html"><span class="underline">p</span>ieces</a></li>
         <li><a href="#">about</a></li>
     </ul>
+    <button class="hamburger"><img src="chev.svg" alt=""></button>
 </nav>
 
 <div class="content">
@@ -145,7 +153,7 @@
 
             // Define size classes for random assignment
             const sizeClasses = {
-                small: 'size-small',
+                small: ['size-small', 'size-small-h', 'size-small-v'],
                 medium: ['size-medium', 'size-medium-h', 'size-medium-v'],
                 large: ['size-large', 'size-large-h', 'size-large-v']
             };
@@ -160,13 +168,13 @@
                     return sizeClasses.medium;
                 } else {
                     // Default to small
-                    return [sizeClasses.small];
+                    return sizeClasses.small;
                 }
             }
 
             function getAspectRatioClass(width, height, sizeClass) {
                 const aspectRatio = width / height;
-                if (sizeClass.includes('size-medium') || sizeClass.includes('size-large')) {
+                if (sizeClass.includes('size-small') || sizeClass.includes('size-medium') || sizeClass.includes('size-large')) {
                     if (aspectRatio < 0.67) {
                         return sizeClass.find(c => c.includes('v')); // Vertical
                     } else if (aspectRatio > 1.42) {
@@ -206,6 +214,6 @@
             });
         });
     </script> 
-
+    <script src="sidebar.js"></script>
 </body>
 </html>

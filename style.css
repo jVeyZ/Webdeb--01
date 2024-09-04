@@ -5,7 +5,27 @@
  
 }
 
+.hamburger {
+    background: none;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 45%;
+    border: none;
+    cursor: pointer;
+    transform: rotate(-45deg);
+    transition: transform 0.3s ease;
+}
+.hamburger.active {
+    transform: rotate(135deg); 
+}
+.sidebar.active{
+    left: -9.5rem;
 
+}
+.content.active{
+    padding-left: 5rem;
+}
 
 ::-webkit-scrollbar {
 width: 25px; 
@@ -29,7 +49,7 @@ height: 0px;/* Adjust the width of the scrollbar */
 
 
 html, body {
-    height: 100%; /* Ocupa toda la altura de la ventana */
+    height: 110vh; /* Ocupa toda la altura de la ventana */
     width: 100vw;
     margin: 0;
     padding: 0;
@@ -41,21 +61,24 @@ html, body {
     padding-top: 2%;
     height: 100%; /* Asegura que el contenido ocupe toda la altura */
     flex-direction: column;
+    transition: padding-left 0.3s ease;
 }
 
-nav {
+.sidebar {
     width: 12.5em;
     height: 100%; /* Asegura que el sidebar ocupe toda la altura */
     background-color: #b0d9e7;
     display: flex;
     flex-direction: row;
     position: fixed;
+    left: 0;
+    transition: left 0.3s ease;
 
 }
 
 ul {
     padding-left: 12%;
-    padding-top: 10%;
+    padding-top: 0;
     list-style-type: none;
     height: 100%; /* Ocupa toda la altura */
 }

@@ -7,30 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <style>
         
-    @font-face {
-    font-family: Bodoni;
-    src: url(fonts/BodoniSvtyTwoSCITCTT-Book.woff.otf);
-}
-::-webkit-scrollbar {
-width: 25px; 
-height: 0px;/* Adjust the width of the scrollbar */
-}
-
-::-webkit-scrollbar-track {
-    background: #ffffff; /* Color of the scrollbar track */
-    border-left: 2px solid #000000; 
-
-
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: #ffffff; /* Color of the scrollbar thumb */
-    border-radius: 5px; /* Rounded corners */
-   
-    border: 2px solid black;
-    outline:1px solid white;
-}
-
 .underline{
     text-decoration: underline;
     text-decoration-thickness: 2.5px;
@@ -191,12 +167,13 @@ h1::after{
         <li><a href="gallery.html"><span class="underline">p</span>ieces</a></li>
         <li><a href="#">about</a></li>
     </ul>
+    <button class="hamburger"><img src="chev.svg" alt=""></button>
 </nav>
 
 <div class="content">
     <h1>The Gallery</h1>
     <div class="subtitle">
-        <h2>Notable Artists</h2>
+        <h2>Highlighted Artists</h2>
     </div>
 
     <section class="n-profiles">
@@ -222,7 +199,7 @@ h1::after{
         </div>
     </section>
 
-    <h2>Notable Works</h2>
+    <h2>Highlighted Works</h2>
     <section class="n-works">
         <div class="w1"><a href="https://twitter.com/PluviumG/status/1816884461096828958/photo/1" target="blank"><img src="https://pbs.twimg.com/media/GTbesKgagAQKSoR?format=jpg&name=large" alt=""></a></div>
         <div class="w4"><a href="https://twitter.com/AtomicMrshmallw/status/1828261864276410471/photo/2"target="blank"></a><img src="https://pbs.twimg.com/media/GV9JyCcWsAA1cN8?format=jpg&name=4096x4096" alt=""></a></div>
@@ -254,6 +231,8 @@ h1::after{
     for (const el of target_blank) {
       el.target = "_blank";
     }</script>
+
+    <script src="sidebar.js"></script>
 </body>
 </html>
 
