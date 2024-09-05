@@ -48,7 +48,7 @@ height: 0px;/* Adjust the width of the scrollbar */
 
 
 html, body {
-    height: 110vh; /* Ocupa toda la altura de la ventana */
+    height: 190vh; /* Ocupa toda la altura de la ventana */
     width: 100vw;
     margin: 0;
     padding: 0;
@@ -59,7 +59,7 @@ html, body {
     padding-left: 14em;
     padding-top: 1em;
     padding-right: 1em;
-    height: 100%; /* Asegura que el contenido ocupe toda la altura */
+    height: fit-content; /* Asegura que el contenido ocupe toda la altura */
     flex-direction: column;
     transition: padding-left 0.3s ease;
 }

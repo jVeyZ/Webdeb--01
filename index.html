@@ -55,13 +55,63 @@
         height: 1.5px;
         width: 7%;
     }
+
     
     </style>
     <style>
+.size-small {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+.size-small-h {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+.size-small-v {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.size-medium {
+    grid-column: span 4;
+    grid-row: span 4;
+}
+.size-medium-h {
+    grid-column: span 4;
+    grid-row: span 2;
+}
+.size-medium-v {
+    grid-column: span 2;
+    grid-row: span 4;
+}
+.help{
+    display: block;
+    height: 0;
+    position: relative;
+}
+.help::after{
+    content: "";
+        background: black;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 1.5px;
+        width: 7%;
+}
+
+          .container{
+            width: 85%;
+            height: 100svh ;
+            overflow: hidden;
+            margin-bottom: 3em;
+            position: relative;
+
+        }
           .grid {
             width: 100%;
             display: grid;
-            grid-template-columns: repeat(10, 1fr); 
+            grid-template-columns: repeat(5, 1fr); 
+            grid-template-rows: repeat(8,1fr);
             gap: 5px;
             box-sizing: border-box;
             grid-auto-flow: dense;}
@@ -75,6 +125,29 @@
             background-size: cover;
             background-position: center;
             display: block; /* Ensure <a> tag is block-level */
+        }
+        @media (max-width: 1200px) {
+            .grid {
+                grid-template-columns: repeat(8, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 400px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -120,13 +193,16 @@
 
     <h2>Highlighted Works</h2>
     <div class="container"> 
-
+        <div id="output" class="grid"></div>
     </div>
 
+    <div class="help">
+
+    </div>
 </div>
 
     <script src="js/sidebar.js"></script>
-    <script src="js/grid.js"></script>
+    <script src="js/grid-highlight.js"></script>
 </body>
 </html>
 
