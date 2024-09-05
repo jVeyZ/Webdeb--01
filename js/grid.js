@@ -1,4 +1,4 @@
-fetch('data.json')
+fetch('js/data.json')
 .then(response => response.json()) // Parse the JSON data
 .then(jsonData => {
     // Step 2: Extract the list of items
