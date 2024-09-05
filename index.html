@@ -106,8 +106,6 @@ h1::after{
     
     .n-works{
         display: grid;
-        grid-template-columns: repeat(9, 100px);
-        grid-template-rows: repeat(10, 100px);
         row-gap: 3px;
         column-gap: 3px;
         position: relative;
@@ -158,6 +156,26 @@ h1::after{
     .w13{
         grid-area: 5/1/7/3;
     }</style>
+    <style>
+          .grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr); 
+            gap: 5px;
+            box-sizing: border-box;
+            grid-auto-flow: dense;}
+
+            .item {
+            background: #f4f4f4;
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 1;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-size: cover;
+            background-position: center;
+            display: block; /* Ensure <a> tag is block-level */
+        }
+    </style>
 </head>
 <body>
 <nav class="sidebar">
@@ -200,39 +218,14 @@ h1::after{
     </section>
 
     <h2>Highlighted Works</h2>
-    <section class="n-works">
-        <div class="w1"><a href="https://twitter.com/PluviumG/status/1816884461096828958/photo/1" target="blank"><img src="https://pbs.twimg.com/media/GTbesKgagAQKSoR?format=jpg&name=large" alt=""></a></div>
-        <div class="w4"><a href="https://twitter.com/AtomicMrshmallw/status/1828261864276410471/photo/2"target="blank"></a><img src="https://pbs.twimg.com/media/GV9JyCcWsAA1cN8?format=jpg&name=4096x4096" alt=""></a></div>
-        <div class="w2"><a href="https://twitter.com/ARC_draws/status/1825226070137962917/photo/1"target="blank"></a><img src="https://pbs.twimg.com/media/GVSBbZMboAApYDf?format=jpg&name=large" alt=""></a></div>
-        <div class="w5"><a href="https://x.com/ka_kokono/status/1810702432483328495"><img src="https://pbs.twimg.com/media/GSDmrKRaMAA1SxX?format=jpg&name=4096x4096" alt=""></a></div>
-        <div class="w3"><a href="https://twitter.com/rasetsu001/status/1813632444115157457/photo/1"target="blank"></a><img src="https://pbs.twimg.com/media/GStRFsfaQAA6xNb?format=jpg&name=4096x4096" alt=""></a></div>
-        <div class="w6"><a href="https://twitter.com/NyanaKnifegal/status/1801219060090147211/photo/1"target="blank"></a><img src="https://pbs.twimg.com/media/GP82a2ibYAA0wyA?format=jpg&name=4096x4096" alt=""></a></div>
-        <div class="w7"><a href="https://twitter.com/yo_865/status/1829086773039059236/photo/1"><img src="https://pbs.twimg.com/media/GWI4uDmasAAuKd9?format=jpg&name=4096x4096" alt=""></a></div>
-        <div class="w8"><a href="https://twitter.com/0010_777/status/1825199369634631747/photo/1"><img src="https://pbs.twimg.com/media/GVRpJhfXsAAfq5L?format=jpg&name=large" alt=""></a></div>
-        <div class="w9"><a href="https://twitter.com/sksktktk/status/1824733761235460134"><img src="https://pbs.twimg.com/media/GVK4X60aEAQFNIr?format=jpg&name=large" alt=""></a></div>
-        <div class="w10"><a href="https://x.com/CursedWeeboo/status/1828454010015076814/photo/1"><img src="https://pbs.twimg.com/media/GV_5CwAXQAAdDbL?format=jpg&name=large" alt=""></a></div>
-        <div class="w11"><a href="https://twitter.com/RuanZoe_/status/1798378764717658191/photo/1"><img src="https://pbs.twimg.com/media/GPUf1EebAAACp04?format=jpg&name=large" alt=""></a></div>
-        <div class="w12"><a href="https://twitter.com/7200ss/status/1495770400185524230/photo/1"><img src="https://pbs.twimg.com/media/FMILAkFacAEydc1?format=jpg&name=medium" alt=""></a></div>
-        <div class="w13"><a href="https://twitter.com/unhappyamber/status/1822178856058421537/photo/1"><img src="https://pbs.twimg.com/media/GUmt6qTX0AAHJWJ?format=jpg&name=4096x4096" alt=""></a></div>
-        <div class="w14" style="grid-area: -6/-3/-4/-1;"><a href="https://twitter.com/nineinsweet/status/1818122289478812069/photo/1"><img src="https://pbs.twimg.com/media/GTtEk_UaMAAwO7R?format=jpg&name=large" alt=""></a></div>
-        <div class="w15" style="grid-area: 8/-8/10/-6;"><a href="https://twitter.com/fryprai/status/1814704323374555486/photo/1"><img src="https://pbs.twimg.com/media/GS8f9wxbIAAybB2?format=jpg&name=large" alt=""></a></div>
-        <div class="w16" style="grid-area: span;"><a href="https://twitter.com/_k256/status/1814533195708440834/photo/1"><img src="https://pbs.twimg.com/media/GS6EOyZbIAMNOz4?format=png&name=4096x4096" alt=""></a></div>
-        <div class="w17" style="grid-area: span;"><a href="https://twitter.com/PluviumG/status/1814024640127521156/photo/1"><img src="https://pbs.twimg.com/media/GSy1r6IbIAAizGp?format=jpg&name=4096x4096" alt=""></a></div>
-        <div class="w18" style=" grid-area: 10/-8/11/-6;"><a href="https://twitter.com/eruart/status/1773364137118097432/photo/1"><img src="https://pbs.twimg.com/media/GJxBM67WcAERD2g?format=jpg&name=medium" alt=""></a></div>
+    <div class="container"> 
 
-
-
-    </section>
-
-
+    </div>
 
 </div>
-<script>const target_blank = document.querySelectorAll('.n-works a');
-    for (const el of target_blank) {
-      el.target = "_blank";
-    }</script>
 
     <script src="sidebar.js"></script>
+    <script src="grid.js"></script>
 </body>
 </html>
 

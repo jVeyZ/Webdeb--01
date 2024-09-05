@@ -4,7 +4,6 @@
 
  
 }
-
 .hamburger {
     background: none;
     width: 30px;
@@ -58,7 +57,8 @@ html, body {
 .content {
     flex-grow: 1; /* El contenido ocupará todo el espacio restante */
     padding-left: 14em;
-    padding-top: 2%;
+    padding-top: 1em;
+    padding-right: 1em;
     height: 100%; /* Asegura que el contenido ocupe toda la altura */
     flex-direction: column;
     transition: padding-left 0.3s ease;
@@ -78,7 +78,7 @@ html, body {
 
 ul {
     padding-left: 12%;
-    padding-top: 0;
+    padding-top: 1em;
     list-style-type: none;
     height: 100%; /* Ocupa toda la altura */
 }
