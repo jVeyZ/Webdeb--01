@@ -90,6 +90,6 @@ fetch('js/data.json')
             if (itemsLoaded === flattenedItems.length) {
                 console.log('All images processed and added to the grid.');
             }
-        };
+        }
     });
 });

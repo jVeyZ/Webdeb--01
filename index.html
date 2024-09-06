@@ -126,6 +126,12 @@
             background-position: center;
             display: block; /* Ensure <a> tag is block-level */
         }
+        .pfps{
+            display: flex;
+            height: 4rem;
+            width:  4rem;
+
+        }
         @media (max-width: 1200px) {
             .grid {
                 grid-template-columns: repeat(8, 1fr);
@@ -175,20 +181,10 @@
             </div>
             <p><a href="https://twitter.com/zunkome2" target="_blank">@zunkome2</a></p>
         </div>
+        <div id="pfps" class="pfps"></div>
 
-        <div class="profile">
-            <div class="pfp">
-                <img src="https://pbs.twimg.com/profile_images/1823158528535633920/ZlrUqSiY_400x400.jpg" alt="">
-            </div>
-            <p><a href="https://twitter.com/kanata0401ds" target="_blank">@kanata0401ds</a></p>
-        </div>
-
-        <div class="profile">
-            <div class="pfp">
-                <img src="https://pbs.twimg.com/profile_images/1577700135902904320/Wx1PyhEm_400x400.jpg" alt="">
-            </div>
-            <p><a href="https://twitter.com/PluviumG" target="_blank">@PLRG</a></p>
-        </div>
+ 
+            
     </section>
 
     <h2>Highlighted Works</h2>
@@ -200,7 +196,7 @@
 
     </div>
 </div>
-
+    <script src="js/pfp.js"></script>
     <script src="js/sidebar.js"></script>
     <script src="js/grid-highlight.js"></script>
 </body>
