@@ -1,10 +1,5 @@
-fetch('js/data.json')
-.then(response => response.json()) // Parse the JSON data
-.then(jsonData => {
-    let items = jsonData.items;
-    let maxItems = 5;
 
-    // Step 3: Randomize the order using the Fisher-Yates Shuffle
+    // Function to shuffle an array (Fisher-Yates)
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -12,71 +7,71 @@ fetch('js/data.json')
         }
     }
 
-    function processUrl(url) {
-        return url.replace(/\/status\/[^\/]+/, '/photo');
-    }
-
-    function processProfile(url) {
-        return url.replace(/\/status\/[^\/]+/, '');
-    }
-
-    function pfp(url, callback) {
-        const img = new Image();
-        img.src = url;
-        img.onload = () => {
-            console.log('Image URL:', img.src);
-            if (callback) callback(img.src);
-        };
-        img.onerror = () => {
-            console.error('Failed to load image from:', img.src);
-            if (callback) callback(null);
-        };
-    }
-
-    shuffleArray(items);
-
-    items = items.slice(0, maxItems);
-
-    const outputDiv = document.getElementById('pfps');
-    if (!outputDiv) {
-        console.error('Element with ID "pfps" not found');
-        return;
-    }
-
-    items.forEach(entry => {
-        const img = new Image();
-        img.src = entry.url;
-        img.onload = () => {
-            const { width, height } = img;
-            let imgUrl = processUrl(entry.tweet_url);
-            let profUrl = processProfile(entry.tweet_url);
-            console.log(imgUrl);
-            console.log(profUrl);
-
-
-            // Create the a tag
-            const link = document.createElement('a');
-            link.href = profUrl;
-            link.target = "_blank";
-            link.className = 'item';
-
-            // Use pfp to set the background image
-            pfp(imgUrl, (imageSrc) => {
-                if (imageSrc) {
-                    link.style.backgroundImage = `url('${imageSrc}')`;
+    // Function to call backend and get the Twitter profile image URL
+    function getProfileImage(username) {
+        return fetch(`http://localhost:3000/get-twitter-profile?username=${username}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.profile_image_url) {
+                    return data.profile_image_url;
                 } else {
-                    console.error('Image source not available.');
+                    console.error('Failed to get profile image URL:', data.error);
+                    return null;
                 }
+            })
+            .catch(error => {
+                console.error('Error fetching profile image:', error);
+                return null;
             });
+    }
 
-            // Append the a tag to the output div
-            outputDiv.appendChild(link);
-        };
-        img.onerror = () => {
-            console.error(`Failed to load image from ${entry.url}`);
-        };
-    });
-})
-.catch(error => {
-    console.error('Error fetching or processing data:', error);
-});
+    // Fetch your data.json file and process it
+    fetch('js/data.json')
+        .then(response => response.json()) // Parse the JSON data
+        .then(async jsonData => {
+            let items = jsonData.items;
+            let maxItems = 5;
+
+            // Shuffle the items array
+            shuffleArray(items);
+
+            // Slice to limit the number of items
+            items = items.slice(0, maxItems);
+
+            const outputDiv = document.getElementById('pfps');
+            if (!outputDiv) {
+                console.error('Element with ID "pfps" not found');
+                return;
+            }
+
+            for (const entry of items) {
+                const tweetUrl = entry.tweet_url;
+                const usernameMatch = tweetUrl.match(/twitter\.com\/([^\/]+)\/status/);
+                const username = usernameMatch ? usernameMatch[1] : null;
+
+                if (username) {
+                    // Call the backend to get the profile image URL
+                    const profileImageUrl = await getProfileImage(username);
+
+                    if (profileImageUrl) {
+                        // Create the a tag
+                        const link = document.createElement('a');
+                        link.href = tweetUrl;
+                        link.target = "_blank"; // Opens link in a new tab
+                        link.className = 'item'; // Use appropriate class if needed
+                        link.style.backgroundImage = `url('${profileImageUrl}')`;
+
+                        // Append the a tag to the output div
+                        outputDiv.appendChild(link);
+                    } else {
+                        console.error(`Failed to load image for ${username}`);
+                    }
+                } else {
+                    console.error('Failed to extract username from tweet URL:', tweetUrl);
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching or processing data:', error);
+        });
+
