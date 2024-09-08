@@ -15,6 +15,21 @@
     }
     .pfp{
         width: 125px;
+        height: 125px;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center;
+    }
+    .pfps {
+        display: flex;
+
+        align-items: center;
+        justify-content: left; 
+        gap: 10%;
+        padding-bottom: 3%;
+        width: 100%;
+        position: relative;
+    
     }
     .profile {
         font-size: 1.25rem;
@@ -36,17 +51,7 @@
         color: rgb(190, 101, 101);
     }
     
-    .n-profiles {
-        display: flex;
-        align-items: center;
-        justify-content: left; 
-        gap: 10%;
-        padding-bottom: 3%;
-        width: 100%;
-        position: relative;
-    
-    }
-    .n-profiles::after{
+    .pfps::after{
         content: "";
         background: black;
         position: absolute;
@@ -126,12 +131,8 @@
             background-position: center;
             display: block; /* Ensure <a> tag is block-level */
         }
-        .pfps{
-            display: flex;
-            height: 4rem;
-            width:  4rem;
-
-        }
+        
+       
         @media (max-width: 1200px) {
             .grid {
                 grid-template-columns: repeat(8, 1fr);
@@ -174,15 +175,13 @@
         <h2>Highlighted Artists</h2>
     </div>
 
-    <section class="n-profiles">
+    <section id="pfps" class="pfps">
         <div class="profile">
             <div class="pfp">
                 <img src="https://pbs.twimg.com/profile_images/1721642809177079808/KJ0wu4vV_400x400.jpg" alt="">
             </div>
             <p><a href="https://twitter.com/zunkome2" target="_blank">@zunkome2</a></p>
         </div>
-        <div id="pfps" class="pfps"></div>
-
  
             
     </section>

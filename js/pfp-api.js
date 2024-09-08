@@ -3,7 +3,7 @@ fetch('js/data.json')
   .then(response => response.json()) // Parse the JSON data
   .then(async jsonData => {
     let items = jsonData.items;
-    const maxItems = 5; // Adjust as needed
+    const maxItems = 2; // Adjust as needed
 
     // Step 3: Randomize the order using the Fisher-Yates Shuffle
     function shuffleArray(array) {
@@ -79,7 +79,7 @@ fetch('js/data.json')
       const link = document.createElement('a');
       link.href = profUrl;
       link.target = "_blank";
-      link.className = 'item';
+      link.className = 'pfp';
       link.style.backgroundImage = `url('${profileImageUrl}')`; // Set background image
 
       // Append the a tag to the output div
