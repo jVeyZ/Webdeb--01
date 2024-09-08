@@ -1495,6 +1495,24 @@
       "profile_name": "@HoracioAltuna",
       "profile_url": "https://x.com/HoracioAltuna",
       "pfp_url": "https://pbs.twimg.com/profile_images/3098277356/33679ad087a4e0f1463d2b4ddb251fe3_400x400.jpeg"
+    },
+    {
+      "tweet_url": "https://x.com/Tudasix/status/1832415579690692714",
+      "image_urls": [
+        "https://pbs.twimg.com/media/GW4MNCNW0AAkHUy?format=jpg&name=large"
+      ],
+      "profile_name": "@Tudasix",
+      "profile_url": "https://x.com/Tudasix",
+      "pfp_url": "https://pbs.twimg.com/profile_images/1832354165231652864/CJgL_Ipg_400x400.jpg"
+    },
+    {
+      "tweet_url": "https://x.com/Tudasix/status/1832684810147672324",
+      "image_urls": [
+        "https://pbs.twimg.com/media/GW8A8s_a8AAwicg?format=jpg&name=large"
+      ],
+      "profile_name": "@Tudasix",
+      "profile_url": "https://x.com/Tudasix",
+      "pfp_url": "https://pbs.twimg.com/profile_images/1832354165231652864/CJgL_Ipg_400x400.jpg"
     }
   ]
 }
