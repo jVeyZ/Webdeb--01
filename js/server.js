@@ -11,27 +11,18 @@ app.get('/api/profile-image/:profile', async (req, res) => {
     const profile = req.params.profile;
 
     try {
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({headless: false});
         const page = await browser.newPage();
 
         console.log(`Navigating to profile: https://x.com/${profile}/photo`);
 
         // Navigate to the profile page
-        await page.goto(`https://x.com/${profile}/photo`, { waitUntil: 'networkidle2' });
+        await page.goto(`https://x.com/${profile}/photo`);
+        await page.waitForSelector('div[aria-label="Image"] img');
 
         // Extract the profile image from the background-image style or img tag
         const profileImageUrl = await page.evaluate(() => {
-            // First, try to get the image from the background-image style
-            const divWithBackgroundImage = document.querySelector('div[aria-label="Image"] div[style*="background-image"]');
-            if (divWithBackgroundImage) {
-                const style = divWithBackgroundImage.style.backgroundImage;
-                const url = style.match(/url\("(.*?)"\)/);
-                if (url && url[1]) {
-                    return url[1]; // Return the URL inside background-image
-                }
-            }
 
-            // If background-image is not available, fall back to the <img> tag
             const imgTag = document.querySelector('div[aria-label="Image"] img');
             if (imgTag && imgTag.src) {
                 return imgTag.src; // Return the src attribute of the img tag
@@ -39,7 +30,7 @@ app.get('/api/profile-image/:profile', async (req, res) => {
 
             return null; // Return null if no image is found
         });
-
+        console.log(profileImageUrl);
         await browser.close();
 
         if (profileImageUrl) {
