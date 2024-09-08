@@ -1,3 +1,5 @@
+//OBSOLETE WITH NEW FORNT END IMPLEMENTATION!!! 
+
 const express = require('express');
 const puppeteer = require('puppeteer');
 const cors = require('cors'); // Import cors
