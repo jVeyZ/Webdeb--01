@@ -13,7 +13,6 @@ async function scrapeProfile(profileHandle) {
     try {
         await page.goto(`https://x.com/${profileHandle}/photo`);
         await page.waitForSelector('div[aria-label="Image"] img');
-        // Get the profile picture URL
         const profileImageUrl = await page.evaluate(() => {
             const imgTag = document.querySelector('div[aria-label="Image"] img');
             return imgTag ? imgTag.src : null;
@@ -39,17 +38,14 @@ async function scrapeProfile(profileHandle) {
     }
 }
 
-// Update the JSON with the new profile data
 async function updateJsonWithProfileData() {
     for (let item of jsonData.items) {
-        const profileHandle = item.tweet_url.split('/')[3]; // Extract handle from tweet_url
+        const profileHandle = item.tweet_url.split('/')[3]; 
 
-        // Check if profile data already exists in the item
         if (!item.profile_name || !item.pfp_url) {
             const profileData = await scrapeProfile(profileHandle);
 
             if (profileData) {
-                // Append the new profile data
                 item.profile_name = profileData.profile_name;
                 item.profile_url = profileData.profile_url;
                 item.pfp_url = profileData.pfp_url;
@@ -59,7 +55,7 @@ async function updateJsonWithProfileData() {
         }
     }
 
-    // Write the updated data back to the JSON file
+
     fs.writeFileSync(jsonFilePath, JSON.stringify(jsonData, null, 2), 'utf-8');
     console.log('JSON data updated successfully.');
 }

@@ -7,7 +7,7 @@ const cors = require('cors'); // Import cors
 const app = express();
 const PORT = 3000;
 
-app.use(cors()); // Enable CORS for all requests
+app.use(cors()); 
 
 app.get('/api/profile-image/:profile', async (req, res) => {
     const profile = req.params.profile;
@@ -18,19 +18,18 @@ app.get('/api/profile-image/:profile', async (req, res) => {
 
         console.log(`Navigating to profile: https://x.com/${profile}/photo`);
 
-        // Navigate to the profile page
+
         await page.goto(`https://x.com/${profile}/photo`);
         await page.waitForSelector('div[aria-label="Image"] img');
 
-        // Extract the profile image from the background-image style or img tag
         const profileImageUrl = await page.evaluate(() => {
 
             const imgTag = document.querySelector('div[aria-label="Image"] img');
             if (imgTag && imgTag.src) {
-                return imgTag.src; // Return the src attribute of the img tag
+                return imgTag.src; 
             }
 
-            return null; // Return null if no image is found
+            return null; 
         });
         console.log(profileImageUrl);
         await browser.close();

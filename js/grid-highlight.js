@@ -1,27 +1,27 @@
 fetch('js/data.json')
-    .then(response => response.json()) // Parse the JSON data
+    .then(response => response.json()) 
     .then(jsonData => {
-        // Step 2: Extract the list of items
+        
         let items = jsonData.items;
 
-        // Step 3: Randomize the order using the Fisher-Yates Shuffle
+        
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+                [array[i], array[j]] = [array[j], array[i]]; 
             }
         }
 
         shuffleArray(items);
 
-        const maxRows = 6; // Max number of rows
-        const columnsPerRow = 5; // Set according to your grid layout (5 in this case)
+        const maxRows = 6; 
+        const columnsPerRow = 5;
 
-        // Step 4: Flatten the structure and randomize URLs within each item
+
         let flattenedItems = [];
 
         items.forEach(item => {
-            shuffleArray(item.image_urls);  // Shuffle the image_urls array for each item
+            shuffleArray(item.image_urls); 
 
             item.image_urls.forEach((url, index) => {
                 flattenedItems.push({
@@ -31,10 +31,9 @@ fetch('js/data.json')
             });
         });
 
-        // Shuffle the flattened list of URLs
+
         shuffleArray(flattenedItems);
 
-        // Define size classes for random assignment
         const sizeClasses = {
             small: ['size-small', 'size-small-h', 'size-small-v'],
             medium: ['size-medium', 'size-medium-h', 'size-medium-v'],
@@ -44,13 +43,10 @@ fetch('js/data.json')
         function getRandomSizeClass() {
             const rand = Math.random();
             if (rand < 0.1) {
-                // 10% chance for large
                 return sizeClasses.large;
             } else if (rand < 0.4) {
-                // 30% chance for medium
                 return sizeClasses.medium;
             } else {
-                // Default to small
                 return sizeClasses.small;
             }
         }
@@ -59,25 +55,24 @@ fetch('js/data.json')
             const aspectRatio = width / height;
             if (sizeClass.includes('size-small') || sizeClass.includes('size-medium') || sizeClass.includes('size-large')) {
                 if (aspectRatio < 0.67) {
-                    return sizeClass.find(c => c.includes('v')); // Vertical
+                    return sizeClass.find(c => c.includes('v')); 
                 } else if (aspectRatio > 1.42) {
-                    return sizeClass.find(c => c.includes('h')); // Horizontal
+                    return sizeClass.find(c => c.includes('h')); 
                 }
             }
-            return sizeClass[0]; // Default size class if no variation
+            return sizeClass[0]; 
         }
 
-        // Load image dimensions and apply size classes
+
         const outputDiv = document.getElementById('output');
         let itemsLoaded = 0;
-        let currentItemsInRow = 0;
 
         flattenedItems.forEach(entry => {
-            // Calculate the number of rows that would be filled based on how many items have been added
+
             const currentRow = Math.ceil(itemsLoaded / columnsPerRow);
             if (currentRow >= maxRows) {
                 console.log(`Reached max row limit: ${maxRows} rows`);
-                return; // Stop appending more items after reaching maxRows
+                return; 
             }
 
             const img = new Image();
@@ -87,14 +82,14 @@ fetch('js/data.json')
                 const baseClasses = getRandomSizeClass();
                 const finalClass = getAspectRatioClass(width, height, baseClasses);
 
-                // Create the a tag
+
                 const link = document.createElement('a');
                 link.href = entry.tweet_url;
-                link.target = "_blank"; // Opens link in a new tab
-                link.className = 'item ' + finalClass; // Add final size class
+                link.target = "_blank"; 
+                link.className = 'item ' + finalClass; 
                 link.style.backgroundImage = `url('${entry.url}')`;
 
-                // Append the a tag to the output div
+
                 outputDiv.appendChild(link);
 
                 itemsLoaded++;
