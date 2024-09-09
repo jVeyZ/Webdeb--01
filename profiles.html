@@ -17,28 +17,36 @@
         background-position: center;
         margin-bottom: 1.5rem;
         position: relative;
+        border: 2px solid black;
     }
     .pfps {
         display: grid;
         grid-template-columns: repeat(4, 2fr);
-        gap: 1rem;
+        align-items: center;
+        justify-content: left; 
+        gap: 2rem;
         padding-bottom: 3%;
         width: 95%;
         position: relative;
     
     }
+  
     .profile {
         font-size: 1.25rem;
         width:100%;
         height: auto;
         border-radius: 2rem;
+        padding: 3rem 0;
+        background-color: #ddedfa;
         text-align: center;
+        border: 2px solid black;
     }
-    #pfps{width: 80%;}
     .profile .name {
         text-decoration: none;
+        border: 2px solid black;
+        border-radius: 7px;
         padding: 5px;
-
+        background-color: white;
     }
     
     .profile a:link, .profile a:visited {
@@ -159,8 +167,8 @@
 <body>
 <nav class="sidebar">
     <ul>
-        <li><a href="#"><span class="underline">h</span>ome</a></li>
-        <li><a href="profiles.html"><span class="underline">a</span>rtists</a></li>
+        <li><a href="index.html"><span class="underline">h</span>ome</a></li>
+        <li><a href="#"><span class="underline">a</span>rtists</a></li>
         <li><a href="gallery.html"><span class="underline">p</span>ieces</a></li>
         <li><a href="#">about</a></li>
     </ul>
@@ -175,19 +183,9 @@
 
     <section id="pfps" class="pfps">          
     </section>
-
-    <h2>Highlighted Works</h2>
-    <div class="container"> 
-        <div id="output" class="grid"></div>
-    </div>
-
-    <div class="help">
-
-    </div>
 </div>
-    <script src="js/pfp-api.js"></script>
+    <script src="js/pfp-grid.js"></script>
     <script src="js/sidebar.js"></script>
     <script src="js/grid-highlight.js"></script>
 </body>
 </html>
-
