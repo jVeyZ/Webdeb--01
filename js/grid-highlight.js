@@ -14,16 +14,12 @@ fetch('js/data.json')
 
         shuffleArray(items);
 
-        const maxRows = 6; 
-        const columnsPerRow = 5;
-
-
         let flattenedItems = [];
 
         items.forEach(item => {
             shuffleArray(item.image_urls); 
 
-            item.image_urls.forEach((url, index) => {
+            item.image_urls.forEach((url) => {
                 flattenedItems.push({
                     url: url,
                     tweet_url: item.tweet_url
@@ -35,15 +31,15 @@ fetch('js/data.json')
         shuffleArray(flattenedItems);
 
         const sizeClasses = {
-            small: ['size-small', 'size-small-h', 'size-small-v'],
-            medium: ['size-medium', 'size-medium-h', 'size-medium-v'],
-            large: ['size-large', 'size-large-h', 'size-large-v']
+            small: ['size-small'],
+            medium: ['size-medium'],
+            high: ['size-high']
         };
 
         function getRandomSizeClass() {
             const rand = Math.random();
             if (rand < 0.1) {
-                return sizeClasses.large;
+                return sizeClasses.high;
             } else if (rand < 0.4) {
                 return sizeClasses.medium;
             } else {
@@ -51,7 +47,7 @@ fetch('js/data.json')
             }
         }
 
-        function getAspectRatioClass(width, height, sizeClass) {
+      /*   function getAspectRatioClass(width, height, sizeClass) {
             const aspectRatio = width / height;
             if (sizeClass.includes('size-small') || sizeClass.includes('size-medium') || sizeClass.includes('size-large')) {
                 if (aspectRatio < 0.67) {
@@ -61,36 +57,41 @@ fetch('js/data.json')
                 }
             }
             return sizeClass[0]; 
-        }
+        } */
 
 
         const outputDiv = document.getElementById('output');
         let itemsLoaded = 0;
+        let maxarea = 48;
+        let itemarea = 0;
 
         flattenedItems.forEach(entry => {
-
-            const currentRow = Math.ceil(itemsLoaded / columnsPerRow);
-            if (currentRow >= maxRows) {
-                console.log(`Reached max row limit: ${maxRows} rows`);
-                return; 
-            }
-
             const img = new Image();
             img.src = entry.url;
             img.onload = () => {
-                const { width, height } = img;
                 const baseClasses = getRandomSizeClass();
-                const finalClass = getAspectRatioClass(width, height, baseClasses);
 
 
                 const link = document.createElement('a');
                 link.href = entry.tweet_url;
                 link.target = "_blank"; 
-                link.className = 'item ' + finalClass; 
+                link.className = 'item ' + baseClasses; 
                 link.style.backgroundImage = `url('${entry.url}')`;
+                if (baseClasses == sizeClasses.high) {
+                    itemarea = 8;
+                }
+                else if (baseClasses == sizeClasses.medium) {
+                    itemarea = 16;
+                }
+                else{
+                    itemarea = 4
+                }
+                if (maxarea > 0 && maxarea-itemarea>=0) {
+                    outputDiv.appendChild(link);
+                    maxarea -= itemarea;
+                }
 
-
-                outputDiv.appendChild(link);
+                
 
                 itemsLoaded++;
                 if (itemsLoaded === flattenedItems.length) {
