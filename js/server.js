@@ -30,6 +30,7 @@ app.get('/api/profile-image/:profile', async (req, res) => {
             }
 
             return null; 
+            
         });
         console.log(profileImageUrl);
         await browser.close();
