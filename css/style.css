@@ -48,7 +48,7 @@ height: 0px;/* Adjust the width of the scrollbar */
 
 
 html, body {
-    height: 190vh; /* Ocupa toda la altura de la ventana */
+    height: max-content; /* Ocupa toda la altura de la ventana */
     width: 100vw;
     margin: 0;
     padding: 0;

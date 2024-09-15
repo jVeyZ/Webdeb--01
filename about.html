@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Gallery</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+</head>
+<body>
+<nav class="sidebar">
+    <ul>
+        <li><a href="index.html"><span class="underline">h</span>ome</a></li>
+        <li><a href="profiles.html"><span class="underline">a</span>rtists</a></li>
+        <li><a href="gallery.html"><span class="underline">p</span>ieces</a></li>
+        <li><a href="#">about</a></li>
+    </ul>
+    <button class="hamburger"><img src="fonts/chev.svg" alt=""></button>
+</nav>
+
+<div class="content">
+    <header>
+        <div class="side"><hr></div>
+        <div class="mid"><div class="prof"></div></div>
+        <div class="side"><hr></div>
+    </header>
+
+    <div class="main">
+        <div class="q" id="why"><h2 class="t">Why</h2><p>Honestly no big reason, I got bored during summer and decided to give webdev a go. 
+            I just thought I'd need a project I'm minimally invested on to keep on learning so here we are. I thought beacuse the design is simple so would be making the web but it seems making random grids involves a lot of fucking Js, welcome to my first website.
+        </p></div>
+        <div></div>
+        <div class="q" id="what"><h2 class="t">What</h2><p>I wanted to make a small pasion project to learn a bit of wevdev, so this is my tribute to some artists I happen to like. It's not meant to be furtherly updated with new content, what you see is what you get, if links get broken bad luck.</p></div>
+        <div class="q" id="who"><h2 class="t">Who</h2><p>I dont wanna say much about me, lets just say I'm studying a cs related degree at some uni somewhere</p></div>
+        <div></div>
+        <div class="q" id="gpt"><h2 class="t">GPT</h2><p>Honestly GPT is peak, it hallucinates more than a crackhead on shrooms but its great to learn new concepts, specially for code related matters. Between some 13 y.o. stackoverflow thread or asking gpt, the second one usually gets the job done quicker and better. And yes, I did use it to build this site.</p></div>
+    </div>
+   
+</div>
+<style>
+    p{
+        align-items: start;
+    }
+    .t{
+        position: relative;
+    }
+    .t::after{
+          
+        content: "";
+        background: black;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%); 
+        height: 1.5px;
+        width: 20rem;
+    }
+  
+    .q{
+        margin: auto ;
+    }
+    .main{
+        width: 95%;
+        height: fit-content;
+        display: grid;
+        grid-template-columns: 40% 20% 40%;
+        grid-template-rows: repeat(2, 1fr);
+    }
+    header{
+        display: flex;
+        height: 10rem;
+        width: 97%;
+
+    }
+    .side{
+        width: 40%;
+        align-content: center;
+    }
+    .mid{
+        width: 20%; 
+       
+    }
+    .prof {
+        background-image: url(https://avatars.githubusercontent.com/u/146321233?v=4);
+        margin: auto;
+        width: 10rem;
+        height: 10rem;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center;
+    }
+</style>
+<script src="js/sidebar.js"></script>
+</body>
+</html>

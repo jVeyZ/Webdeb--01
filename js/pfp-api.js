@@ -21,11 +21,20 @@ fetch('js/data.json')
       return;
     }
 
+    const appendedProfiles = new Set();
+
     for (const entry of items) {
       if (!entry.tweet_url) {
         console.error('No tweet URL found for entry', entry);
         continue;
       }
+
+      if (appendedProfiles.has(entry.profile_url)) {
+        console.log(`Profile already added: ${entry.profile_url}`);
+        continue; 
+      }
+
+      appendedProfiles.add(entry.profile_url);
 
       // Create the pfp 
       const link = document.createElement('a');
