@@ -42,6 +42,7 @@ fetch('js/data.json')
       link.target = "_blank";
       link.className = 'pfp';
       link.style.backgroundImage = `url('${entry.pfp_url}')`; 
+      link.style.backgroundColor = "#6997a8";
 
       // Create the name 
       const name = document.createElement('a');

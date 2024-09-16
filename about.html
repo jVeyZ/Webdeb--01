@@ -39,58 +39,69 @@
    
 </div>
 <style>
-    p{
-        align-items: start;
-    }
-    .t{
-        position: relative;
-    }
-    .t::after{
-          
-        content: "";
-        background: black;
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%); 
-        height: 1.5px;
-        width: 20rem;
+    .t {
+      position: relative;
+      text-align: center;
+      
     }
   
-    .q{
-        margin: auto ;
+    .t::after {
+      content: "";
+      background: black;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 1.5px;
+      width: 20rem;
     }
-    .main{
-        width: 95%;
-        height: fit-content;
-        display: grid;
-        grid-template-columns: 40% 20% 40%;
-        grid-template-rows: repeat(2, 1fr);
+  
+    .q {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      text-align: center;
+      padding: 1rem;
+      min-height: 200px; 
     }
-    header{
-        display: flex;
-        height: 10rem;
-        width: 97%;
-
+  
+   
+  
+    .main {
+      width: 95%;
+      height: fit-content;
+      display: grid;
+      grid-template-columns: 40% 20% 40%;
+      grid-template-rows: 50% 50%;
+ 
     }
-    .side{
-        width: 40%;
-        align-content: center;
+  
+    header {
+      display: flex;
+      height: 10rem;
+      width: 97%;
     }
-    .mid{
-        width: 20%; 
-       
+  
+    .side {
+      width: 40%;
+      align-content: center;
     }
+  
+    .mid {
+      width: 20%;
+    }
+  
     .prof {
-        background-image: url(https://avatars.githubusercontent.com/u/146321233?v=4);
-        margin: auto;
-        width: 10rem;
-        height: 10rem;
-        border-radius: 50%;
-        background-size: cover;
-        background-position: center;
+      background-image: url(https://avatars.githubusercontent.com/u/146321233?v=4);
+      margin: auto;
+      width: 10rem;
+      height: 10rem;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
     }
-</style>
+  </style>
+  
 <script src="js/sidebar.js"></script>
 </body>
 </html>
